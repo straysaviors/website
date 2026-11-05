@@ -1,222 +1,704 @@
-/* Hero Section */
-.hero-section {
-  background: url('assets/hero-background.jpg') center/cover no-repeat;
-  height: 100vh;
+:root {
+  --black: #0e0f0a; /* the logo's own black */
+  --white: #fffffd; /* the logo's own white */
+  --paper: #f3f2ee;
+  --grey: #b9b8b2; /* secondary text on black, 9:1 */
+  --ink-soft: #45463f; /* secondary text on paper, 9:1 */
+  --fur: #d9a066; /* sampled from the dogs' coats; the only colour */
+  --fur-hover: #e6b47f;
+  --display: "Cinzel", Georgia, serif;
+  --body: "Mukta", system-ui, sans-serif;
+  --gap: clamp(1rem, 3vw, 2rem);
+  --section: clamp(4rem, 9vw, 7.5rem);
+  --pattern: url("assets/pattern.svg") 0 0 / 360px 360px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  margin: 0;
+  /* fine print grain over the logo black; the doodle pattern is added per section, never behind body text */
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 .05 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    var(--black);
+  color: var(--white);
+  font: 400 1.125rem/1.65 var(--body);
+}
+
+::selection {
+  background: var(--fur);
+  color: var(--black);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: 0.02em;
+  text-wrap: balance;
+  margin: 0 0 0.5em;
+}
+
+h2 {
+  font-size: clamp(2.1rem, 5vw, 3.75rem);
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 62ch;
+  text-wrap: pretty;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--fur);
+  outline-offset: 3px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.wrap,
+.hero {
+  width: min(1200px, 100% - 2 * var(--gap));
+  margin-inline: auto;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font: 800 1rem/1 var(--body);
+  letter-spacing: 0.01em;
+  padding: 1em 1.6em;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out;
+}
+
+.btn-fur {
+  background: var(--fur);
+  color: var(--black);
+}
+
+.btn-fur:hover {
+  background: var(--fur-hover);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn-ghost:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--black);
+  border-color: var(--black);
+}
+
+.btn-line:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+/* Header */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem var(--gap);
+  background: rgb(14 15 10 / 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgb(255 255 253 / 0.12);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  font: 700 1.25rem/1 var(--display);
+  letter-spacing: 0.06em;
+}
+
+.brand img {
+  width: 52px;
+  height: 52px;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.9rem, 2.5vw, 2rem);
+  font-weight: 600;
+}
+
+.site-header nav a:not(.btn) {
+  text-decoration: none;
+  padding-block: 0.7rem; /* 44px tap height */
+}
+
+.site-header nav a:not(.btn):hover {
+  text-decoration: underline;
+}
+
+.site-header .btn {
+  padding: 0.75em 1.3em;
+}
+
+/* Hero: the logo's seal, made of a real rescued puppy */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr minmax(320px, 520px);
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  position: relative;
+  isolation: isolate;
+}
+
+/* doodles only on the seal side, fading out before the copy */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset-block: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: -1;
+  background: var(--pattern);
+  -webkit-mask-image: linear-gradient(to left, #000 35%, transparent 62%);
+  mask-image: linear-gradient(to left, #000 35%, transparent 62%);
+  pointer-events: none;
+}
+
+/* nothing inside main may widen the page sideways */
+main {
+  overflow-x: clip;
+}
+
+.hero-copy {
+  container-type: inline-size;
+  min-width: 0;
+}
+
+/* sized to the copy column, so "Find a home." always fits on one line */
+.hero h1 {
+  font-size: clamp(2rem, 12cqi, 5.5rem);
+  letter-spacing: 0.01em;
+}
+
+.hero-copy p {
+  color: var(--grey);
+  font-size: 1.25rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.text-link {
+  color: var(--grey);
+  font-weight: 600;
+  padding-block: 0.7rem;
+}
+
+.text-link:hover {
+  color: var(--white);
+}
+
+.seal {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.seal img {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 76%; /* sits just inside the inner ring (r=196 of 250) */
+  height: 76%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.seal-ring {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: turn 80s linear infinite;
+}
+
+.seal-ring circle {
+  fill: none;
+  stroke: var(--white);
+  stroke-width: 2;
+}
+
+.seal-ring text {
+  fill: var(--white);
+  font: 700 30px var(--display);
+}
+
+@keyframes turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Tally: one line of proof, numbers set large in the logo's serif */
+.tally {
+  border-block: 1px solid rgb(255 255 253 / 0.14);
+  padding-block: clamp(1.75rem, 4vw, 2.75rem);
+}
+
+.tally-line {
+  width: min(1200px, 100% - 2 * var(--gap));
+  max-width: none;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 2.5rem;
+  color: var(--grey);
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tally-line span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45rem;
+  white-space: nowrap;
+}
+
+.tally-line strong {
+  font: 700 clamp(2.2rem, 4.2vw, 3.4rem) / 1 var(--display);
+  font-variant-numeric: lining-nums;
+  color: var(--white);
+}
+
+/* Work: photo collage, each photo and its caption on one panel */
+.work {
+  padding-block: var(--section);
+  background: var(--pattern);
+}
+
+.work-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
+  background: #1b1c17;
+  border: 1px solid rgb(255 255 253 / 0.1);
+  border-radius: 18px;
+}
+
+.work-cta p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.collage {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  gap: var(--gap);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
+}
+
+.collage figure {
+  margin: 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding: 10px;
+  background: #1b1c17;
+  border: 1px solid rgb(255 255 253 / 0.1);
+  border-radius: 18px;
 }
 
-.hero-section .intro-text {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 1.2rem;
-  color: #ffffff;
-}
-
-/* What We Do Section */
-.what-we-do {
-  background-color: #f9f9f9;
-}
-
-.what-we-do h2 {
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-title {
-  font-weight: 600;
-  color: #4d4d4d;
-}
-
-.card-text {
-  font-size: 0.95rem;
-  color: #666;
-}
-
-/* Donate Section */
-.donate-section {
-  background: #333333;
-  padding: 60px 0;
-}
-
-.donate-section h2 {
-  font-size: 2rem;
-  font-weight: 700;
-}
-
-.donate-section p {
-  font-size: 1.1rem;
-  color: #d3d3d3;
-}
-
-.donate-section .btn {
-  font-weight: 600;
-  padding: 12px 30px;
-}
-
-@media (max-width: 768px) {
-  .hero-section {
-      height: auto;
-      padding: 80px 20px;
-  }
-
-  .hero-section h1 {
-      font-size: 2.5rem;
-  }
-}
-
-.section {
+.collage img {
   width: 100%;
-  height: 100dvh;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* How We Started Section */
-/* How We Started Full-Screen Section */
-.full-screen-section {
-  height: 100vh;
-  display: flex;
+.c-rescue {
+  grid-column: 1 / 6;
+  grid-row: 1 / 3;
 }
 
-.image-section {
-  background: url('assets/background-story.jpg') center/cover no-repeat;
-  position: relative;
+/* the tall photo fills whatever height the two rows beside it take */
+.c-rescue img {
+  flex: 1 1 0;
+  min-height: 320px;
 }
 
-.overlay-text {
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  padding: 40px;
-  max-width: 500px;
-  border-radius: 8px;
+.c-feed {
+  grid-column: 6 / 13;
 }
 
-.impact-section {
-  background-color: #f5f5f5;
-  padding: 40px;
+.c-feed img {
+  aspect-ratio: 16 / 9;
 }
 
-.impact-card {
-  background: #ffffff;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+.c-vet {
+  grid-column: 6 / 9;
 }
 
-.impact-card:hover {
-  transform: translateY(-5px);
+.c-adopt {
+  grid-column: 9 / 13;
 }
 
-.card-img {
-  width: 100%;
-  height: 180px;
+/* bottom pair share one photo height, so their panels line up */
+.c-vet img,
+.c-adopt img {
+  height: clamp(180px, 17vw, 240px);
+}
+
+.collage figcaption {
+  padding: 1rem 0.6rem 0.5rem;
+}
+
+.collage h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.collage figcaption p {
+  color: var(--grey);
+  font-size: 1.02rem;
+  margin: 0;
+}
+
+/* Story: light section, like the logo's white disc */
+.story {
+  background: var(--paper);
+  color: var(--black);
+  padding-block: var(--section);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 380px) 1fr;
+  gap: clamp(2rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.story-grid > img {
+  border-radius: 18px;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
 }
 
-.card-body {
-  padding: 15px;
+.story-lead {
+  font: 600 clamp(1.4rem, 2.6vw, 1.85rem) / 1.35 var(--body);
 }
 
-.count {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #ff6b6b;
+.story p:not(.story-lead) {
+  color: var(--ink-soft);
 }
 
-.small {
-  font-size: 1rem;
-  color: #666;
+.faces {
+  display: flex;
+  margin-top: 1.75rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .overlay-text, .impact-section {
-      padding: 20px;
-  }
-  
-  .full-screen-section {
-      height: auto;
-  }
+.faces img {
+  width: clamp(64px, 9vw, 92px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--paper);
 }
 
-
-
-
-/* Support Us Section */
-.support-us {
-  background-color: #f9f9f9;
-  padding: 60px 0;
+.faces img + img {
+  margin-left: -18px;
 }
 
-.support-us h2 {
-  font-weight: 700;
-}
-
-.qr-code {
+/* Donate */
+.donate {
+  padding-block: var(--section);
   text-align: center;
-  padding: 15px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  width: 200px;
-  margin: 0 auto;
 }
 
-.payment-options {
-  list-style-type: none;
-  padding: 0;
+.donate h2 {
+  font-size: clamp(2.8rem, 7vw, 5rem);
 }
 
-.payment-options li {
-  margin: 10px 0;
-  font-size: 1rem;
-  color: #333;
+/* one rescued dog, ringed like the logo's seal */
+.donate-dog {
+  width: clamp(110px, 14vw, 150px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 1.5rem;
+  border: 3px solid var(--black);
+  box-shadow: 0 0 0 2px var(--white), 0 0 0 8px var(--black), 0 0 0 10px var(--white);
 }
 
-.instagram-frame {
-  border: 2px solid #ddd;
-  padding: 10px;
-  border-radius: 8px;
+/* phones only: jump straight to your payment method */
+.pay-jump {
+  display: none;
 }
 
-.instagram-frame img {
-  max-width: 100%;
-  border-radius: 8px;
+.donate-lead {
+  margin-inline: auto;
+  color: var(--grey);
+  font-size: 1.2rem;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .support-us {
-      padding: 30px 0;
-  }
-  
-  .qr-code,
-  .instagram-frame {
-      min-width: 350px;
-      position: relative;
-  }
-}
-#qr-img{
-  min-width: 100px;
+.pay {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 420px));
+  justify-content: center;
+  gap: var(--gap);
+  margin-top: clamp(1.5rem, 4vw, 3rem);
 }
 
-/* Blurred Background Styling */
-.blur-bg {
-  background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
-  padding: 20px;
+.pay-panel {
+  background: var(--white);
+  color: var(--black);
+  border-radius: 18px;
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  scroll-margin-top: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pay-panel h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.who {
+  color: var(--ink-soft);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+}
+
+/* phones: tap-to-pay first, QR small as a fallback for another device */
+.pay-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.pay-id {
+  margin: 1rem 0 1.25rem;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.qr {
+  margin: 0;
+}
+
+.qr img {
+  width: min(170px, 100%);
+  margin-inline: auto;
   border-radius: 10px;
-  backdrop-filter: blur(10px); /* Applies the blur effect */
-  -webkit-backdrop-filter: blur(10px); /* For Safari support */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: auto ;
-  
+}
+
+.qr figcaption {
+  margin-top: 0.6rem;
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* computers: the QR leads, scanned with a phone */
+@media (hover: hover) and (pointer: fine) {
+  .qr {
+    order: 1;
+  }
+
+  .qr img {
+    width: min(260px, 100%);
+  }
+
+  .pay-id {
+    order: 2;
+  }
+
+  .pay-actions {
+    order: 3;
+    margin-top: auto;
+  }
+}
+
+/* Footer */
+.site-footer {
+  background: var(--pattern);
+  border-top: 1px solid rgb(255 255 253 / 0.15);
+  text-align: center;
+  padding: clamp(3rem, 7vw, 5rem) var(--gap);
+  color: var(--grey);
+}
+
+.site-footer img {
+  margin: 0 auto 1rem;
+}
+
+.site-footer p {
+  margin-inline: auto;
+}
+
+/* Tablets and phones */
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .seal {
+    max-width: 420px;
+    margin-inline: auto;
+    order: -1;
+  }
+
+  .hero::before {
+    -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 55%);
+    mask-image: linear-gradient(to bottom, #000 30%, transparent 55%);
+  }
+
+  .tally-line {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem 1rem;
+  }
+
+  .tally-line span {
+    flex-direction: column;
+    gap: 0.25rem;
+    white-space: normal;
+  }
+
+  .collage {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .c-rescue,
+  .c-feed {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .c-rescue img {
+    flex: none;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .c-vet img,
+  .c-adopt img {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .c-vet,
+  .c-adopt {
+    grid-column: auto;
+  }
+
+  .story-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .story-grid > img {
+    max-width: min(320px, 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .site-header nav a:not(.btn),
+  .brand span {
+    display: none;
+  }
+
+  .pay {
+    grid-template-columns: 1fr;
+  }
+
+  .pay-jump {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1.25rem;
+  }
+
+  .pay-jump a {
+    padding: 0.8em 1.2em;
+    border: 1px solid rgb(255 255 253 / 0.35);
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .collage {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* upi:// links only open an app on phones; hide on mouse-driven computers */
+@media (hover: hover) and (pointer: fine) {
+  .touch-only {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .seal-ring {
+    animation: none;
+  }
 }

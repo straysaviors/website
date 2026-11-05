@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="360" viewBox="0 0 360 360">
+  <defs>
+    <g id="paw">
+      <path d="M0 2c-6 0-11 5-11 10 0 4 3 6 6 6 2 0 3-1 5-1s3 1 5 1c3 0 6-2 6-6 0-5-5-10-11-10z"/>
+      <ellipse cx="-9" cy="-4" rx="3.2" ry="4.2"/>
+      <ellipse cx="-3.5" cy="-10" rx="3.2" ry="4.4"/>
+      <ellipse cx="3.5" cy="-10" rx="3.2" ry="4.4"/>
+      <ellipse cx="9" cy="-4" rx="3.2" ry="4.2"/>
+    </g>
+    <path id="bone" d="M-10-3H10A4.5 4.5 0 1 1 15 0 4.5 4.5 0 1 1 10 3H-10A4.5 4.5 0 1 1-15 0 4.5 4.5 0 1 1-10-3Z"/>
+    <g id="dog">
+      <path d="M-8-8Q0-13 8-8 11 0 8 7 0 12-8 7-11 0-8-8Z"/>
+      <path d="M-8-8Q-16-6-13 6-10 4-9-1M8-8Q16-6 13 6 10 4 9-1"/>
+      <path d="M-1.5 3.5h3l-1.5 2z"/>
+      <circle cx="-3.5" cy="-2" r=".8"/>
+      <circle cx="3.5" cy="-2" r=".8"/>
+    </g>
+    <path id="heart" d="M0 7C-13-2-8-13 0-6 8-13 13-2 0 7Z"/>
+    <g id="ball">
+      <circle r="7"/>
+      <path d="M-7 0Q0-4 7 0M-4.5-5.5Q0 0-4.5 5.5"/>
+    </g>
+  </defs>
+  <g fill="none" stroke="#fffffd" stroke-opacity=".06" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <use href="#paw" transform="translate(40 46) rotate(-18)"/>
+    <use href="#bone" transform="translate(150 30) rotate(24)"/>
+    <use href="#dog" transform="translate(262 62) rotate(10) scale(1.2)"/>
+    <use href="#heart" transform="translate(330 150) rotate(-12)"/>
+    <use href="#dog" transform="translate(92 140) rotate(-8) scale(1.35)"/>
+    <use href="#paw" transform="translate(206 150) rotate(28) scale(.85)"/>
+    <use href="#bone" transform="translate(34 240) rotate(-30) scale(.85)"/>
+    <use href="#ball" transform="translate(140 252)"/>
+    <use href="#paw" transform="translate(270 262) rotate(-40) scale(1.1)"/>
+    <use href="#bone" transform="translate(80 330) rotate(-14) scale(.9)"/>
+    <use href="#heart" transform="translate(200 330) rotate(18) scale(.85)"/>
+    <use href="#paw" transform="translate(330 330) rotate(12) scale(.8)"/>
+  </g>
+</svg>

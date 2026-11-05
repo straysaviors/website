@@ -1,0 +1,8 @@
+<!doctype html><body><script>
+const ws=[320];let out=[];let i=0;
+function next(){if(i>=ws.length){document.body.innerHTML='<pre id=r>'+out.join('\n')+'</pre>';return}
+const w=ws[i++];const f=document.createElement('iframe');f.style.width=w+'px';f.style.height='800px';f.src='../../index.html';
+f.onload=()=>setTimeout(()=>{const d=f.contentDocument;const sw=d.documentElement.scrollWidth;
+const wide=[...d.querySelectorAll('body *')].filter(e=>{const r=e.getBoundingClientRect();return r.right>w+1||r.left<-1}).map(e=>e.tagName+'.'+e.className+'['+Math.round(e.getBoundingClientRect().left)+'..'+Math.round(e.getBoundingClientRect().right)+']').slice(0,12);
+out.push(w+': scrollWidth '+sw+(sw>w?' OVERFLOW ':' ok ')+wide.join(', '));f.remove();next()},800);document.body.appendChild(f)}
+next();</script>

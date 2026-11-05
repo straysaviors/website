@@ -3,239 +3,191 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stray Saviors</title>
+    <title>Stray Saviors | Street dog rescue</title>
+    <meta
+      name="description"
+      content="Stray Saviors is a small volunteer team in India that feeds, treats and rehomes street dogs. Donate by UPI or PayPal."
+    />
+    <link rel="icon" href="assets/logo.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.straysaviors.com/" />
+    <meta property="og:title" content="Stray Saviors | Street dog rescue" />
+    <meta property="og:description" content="We feed, treat and rehome street dogs in India. Donate by UPI or PayPal." />
+    <meta property="og:image" content="https://www.straysaviors.com/assets/web/og.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Mukta:wght@400;600;800&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <!-- Hero Section -->
-    <section
-      class="hero-section text-white text-center d-flex align-items-center"
-    >
-      <div class="container blur-bg ">
-        <h1 class="display-4"><strong>Welcome to Stray Saviors!</strong></h1>
-        <p class="intro-text">
-          At Paws & Hearts Rescue, we believe every dog deserves a second
-          chance. Our journey began with a simple mission: to rescue, heal, and
-          provide loving homes to stray and abandoned dogs. Join us in
-          transforming lives – one paw at a time.
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Stray Saviors, back to top">
+        <img src="assets/logo-round.png" width="150" height="150" alt="" />
+        <span>Stray Saviors</span>
+      </a>
+      <nav aria-label="Main">
+        <a href="#work">What we do</a>
+        <a href="#story">Our story</a>
+        <a class="btn btn-fur" href="#donate">Donate</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Feed. Treat. <span class="nowrap">Find a home.</span></h1>
+          <p>
+            We're a small team of volunteers rescuing stray and abandoned dogs
+            in India. Your donation buys their food, their vet care and their
+            way to a family.
+          </p>
+          <div class="actions">
+            <a class="btn btn-fur" href="#donate">Donate now</a>
+            <a class="text-link" href="https://www.instagram.com/stray_savior/" target="_blank" rel="noopener">or meet the dogs on Instagram</a>
+          </div>
+        </div>
+
+        <div class="seal">
+          <img
+            src="assets/web/3.webp"
+            fetchpriority="high"
+            width="825"
+            height="825"
+            alt="A fluffy brown rescued puppy held up to the camera, eyes half closed in the sun"
+          />
+          <svg class="seal-ring" viewBox="0 0 500 500" aria-hidden="true">
+            <circle cx="250" cy="250" r="246" />
+            <circle cx="250" cy="250" r="196" />
+            <path id="ring-path" d="M250,250 m-208,0 a208,208 0 1,1 416,0 a208,208 0 1,1 -416,0" fill="none" />
+            <text>
+              <textPath href="#ring-path" textLength="1300" lengthAdjust="spacing">STRAY SAVIOR • STRAY RESCUE • FEED • TREAT • REHOME •</textPath>
+            </text>
+          </svg>
+        </div>
+      </section>
+
+      <section class="tally" aria-label="Our impact so far">
+        <p class="tally-line">
+          <span><strong>60+</strong> dogs rescued.</span>
+          <span><strong>100+</strong> given medical care.</span>
+          <span><strong>45+</strong> in loving homes.</span>
+          <span><strong>5</strong> volunteers do it all.</span>
         </p>
-        <a href="#donate" class="btn btn-primary btn-lg mt-4"
-          >Help a dog now...</a
-        >
-      </div>
+      </section>
 
-      
-    </section>
-    <h2 class="text-white mb-4">Our Mission</h2>
-
-    <!-- How We Started Full-Screen Section -->
-    <section class="how-we-started full-screen-section">
-        
-      <div class="container-fluid h-100">
-        <div class="row h-100">
-          <!-- Left Side: Background Image with Text Overlay -->
-          <div class="col-md-6 image-section d-flex align-items-center justify-content-center">
-            <div class="overlay-text p-4">
-              <h2 class="text-white mb-4">Our Mission</h2>
-              <p class="lead text-white">
-                Our story began with a single act of compassion, rescuing a
-                stray who had no one else. That rescue changed our lives and set
-                us on a mission to create a world where every dog finds safety,
-                love, and a chance for a better life.
-              </p>
-              <p class="text-white">
-                Today, with a team of dedicated individuals and the support of
-                our amazing community, we’ve transformed this mission into
-                reality. Together, we’re giving animals the care, comfort, and
-                companionship they deserve.
-              </p>
-            </div>
+      <section id="work" class="work" aria-labelledby="work-title">
+        <div class="wrap">
+          <h2 id="work-title">Where your money goes</h2>
+          <div class="collage">
+            <figure class="c-rescue">
+              <img src="assets/web/8.webp" width="675" height="900" loading="lazy" alt="A volunteer cradling a tiny white puppy just pulled from the street" />
+              <figcaption><h3>Rescue</h3><p>We pick up stray, injured and abandoned dogs and get them somewhere safe the same day.</p></figcaption>
+            </figure>
+            <figure class="c-feed">
+              <img src="assets/web/1.webp" width="814" height="814" loading="lazy" alt="Five brown puppies eating together from one feeding tray" />
+              <figcaption><h3>Feeding</h3><p>Rescued dogs and the street dogs around us get regular meals while they heal and grow.</p></figcaption>
+            </figure>
+            <figure class="c-vet">
+              <img src="assets/web/9.webp" width="733" height="900" loading="lazy" alt="A puppy on a vet's table getting an injection" />
+              <figcaption><h3>Medical care</h3><p>Vaccinations, deworming, wound care and surgery: whatever each dog needs.</p></figcaption>
+            </figure>
+            <figure class="c-adopt">
+              <img src="assets/web/adoption.webp" width="517" height="516" loading="lazy" alt="Three black puppies held together, ready for adoption" />
+              <figcaption><h3>Adoption</h3><p>We match each dog with a family we've met, so the second chance lasts for life.</p></figcaption>
+            </figure>
           </div>
-          <!-- Right Side: Impact Cards -->
-          <div
-            class="col-md-6 impact-section d-flex align-items-center justify-content-center"
-          >
-            <div class="row text-center">
-              <!-- Card 1 -->
-              <div class="col-12 col-md-6 mb-4">
-                <div class="impact-card">
-                  <!-- <img
-                    src="assets/adoption.png"
-                    alt="Rescued Dogs"
-                    class="card-img"
-                  /> -->
-                  <div class="card-body">
-                    <h3 class="count">60+</h3>
-                    <p class="small">Rescued and Rehomed</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Card 2 -->
-              <div class="col-12 col-md-6 mb-4">
-                <div class="impact-card">
-                  <!-- <img
-                    src="medical-stats.jpg"
-                    alt="Medical Care"
-                    class="card-img"
-                  /> -->
-                  <div class="card-body">
-                    <h3 class="count">100+</h3>
-                    <p class="small">Provided with Medical Care</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Card 3 -->
-              <div class="col-12 col-md-6 mb-4">
-                <div class="impact-card">
-                  <!-- <img
-                    src="adoption-stats.jpg"
-                    alt="Adopted Dogs"
-                    class="card-img"
-                  /> -->
-                  <div class="card-body">
-                    <h3 class="count">45+</h3>
-                    <p class="small">Found Loving Homes</p>
-                  </div>
-                </div>
-              </div>
-              <!-- Card 4 -->
-              <div class="col-12 col-md-6 mb-4">
-                <div class="impact-card">
-                  <!-- <img
-                    src="volunteers-stats.jpg"
-                    alt="Volunteers"
-                    class="card-img"
-                  /> -->
-                  <div class="card-body">
-                    <h3 class="count">5</h3>
-                    <p class="small">Dedicated Volunteers</p>
-                  </div>
-                </div>
-              </div>
+          <div class="work-cta">
+            <p>Food, vaccines and vet visits for these dogs all come from donations.</p>
+            <a class="btn btn-fur" href="#donate">Donate now</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="story" class="story" aria-labelledby="story-title">
+        <div class="wrap story-grid">
+          <img src="assets/web/background-story.webp" width="506" height="900" loading="lazy" alt="A cardboard box full of rescued puppies" />
+          <div>
+            <h2 id="story-title">How we started</h2>
+            <p class="story-lead">It began with one stray who had no one else.</p>
+            <p>
+              Rescuing that dog changed our lives and set us on a mission:
+              every dog deserves safety, love and a chance at a better life.
+              Today a handful of volunteers and a community of supporters keep
+              that mission going, one dog at a time.
+            </p>
+            <div class="faces">
+              <img src="assets/web/7.webp" width="900" height="899" loading="lazy" alt="A tan rescued dog lying in the sun" />
+              <img src="assets/web/4.webp" width="900" height="900" loading="lazy" alt="A brown and white puppy looking up" />
+              <img src="assets/web/2.webp" width="524" height="525" loading="lazy" alt="A black puppy and a white puppy sitting side by side" />
+              <img src="assets/web/6.webp" width="898" height="897" loading="lazy" alt="A brown puppy with white markings resting on grass" />
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- What We Do Section with Cards -->
-    <section class="what-we-do py-5">
-      <div class="container">
-        <h2 class="text-center mb-4">What We Do</h2>
-        <div class="row">
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <img src="assets/8.jpeg" class="card-img-top" alt="Rescue" />
-              <div class="card-body text-center">
-                <h5 class="card-title">Rescue & Rehabilitation</h5>
-                <p class="card-text">
-                  Our team works tirelessly to rescue stray, injured, and
-                  abandoned dogs, providing them with immediate care and a safe
-                  haven.
-                </p>
+      <section id="donate" class="donate" aria-labelledby="donate-title">
+        <div class="wrap">
+          <img class="donate-dog" src="assets/web/4.webp" width="900" height="900" loading="lazy" alt="A brown and white rescued puppy looking up at the camera" />
+          <h2 id="donate-title">Donate</h2>
+          <p class="donate-lead">Any amount helps. Pick the way that works where you are.</p>
+          <nav class="pay-jump" aria-label="Choose how to donate">
+            <a href="#pay-upi">I'm in India: UPI</a>
+            <a href="#pay-paypal">I'm abroad: PayPal</a>
+          </nav>
+          <div class="pay">
+            <div class="pay-panel" id="pay-upi">
+              <h3>UPI</h3>
+              <p class="who">For donors in India</p>
+              <div class="pay-actions">
+                <a class="btn btn-fur touch-only" href="upi://pay?pa=samruddhib524@okaxis&amp;pn=Stray%20Saviors&amp;cu=INR">Open UPI app</a>
+                <button class="btn btn-line" type="button" data-copy="samruddhib524@okaxis" aria-live="polite">Copy UPI ID</button>
               </div>
+              <p class="pay-id">samruddhib524@okaxis</p>
+              <figure class="qr">
+                <img src="assets/web/upi_qr.webp" width="600" height="845" loading="lazy" alt="UPI QR code for samruddhib524@okaxis" />
+                <figcaption class="touch-only">Or scan this from another phone.</figcaption>
+              </figure>
             </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <img src="assets/1.png" class="card-img-top" alt="Shelter" />
-              <div class="card-body text-center">
-                <h5 class="card-title">Feeding</h5>
-                <p class="card-text">
-                  Every rescued dog finds a temporary family, receiving love,
-                  comfort, and a space to heal and rediscover trust in humans.
-                </p>
+            <div class="pay-panel" id="pay-paypal">
+              <h3>PayPal</h3>
+              <p class="who">For donors abroad</p>
+              <div class="pay-actions">
+                <a class="btn btn-fur" href="https://www.paypal.me/straysaviors" target="_blank" rel="noopener">Pay with PayPal</a>
               </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <img
-                src="assets/9.jpeg"
-                class="card-img-top"
-                alt="Medical Care"
-              />
-              <div class="card-body text-center">
-                <h5 class="card-title">Medical Care</h5>
-                <p class="card-text">
-                  From vaccinations to surgeries, we provide each dog with the
-                  critical veterinary care needed to live a healthy life.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-3 mb-4">
-            <div class="card">
-              <img src="assets/3.png" class="card-img-top" alt="Adoption" />
-              <div class="card-body text-center">
-                <h5 class="card-title">Adoption & Rehoming</h5>
-                <p class="card-text">
-                  We carefully match each dog with caring families, creating
-                  lifelong bonds and heartwarming stories of second chances.
-                </p>
-              </div>
+              <p class="pay-id">paypal.me/straysaviors</p>
+              <figure class="qr">
+                <img src="assets/web/paypal_qr.webp" width="600" height="776" loading="lazy" alt="PayPal QR code for paypal.me/straysaviors" />
+                <figcaption class="touch-only">Or scan this from another phone.</figcaption>
+              </figure>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
 
+    <footer class="site-footer">
+      <img src="assets/logo-round.png" width="150" height="150" alt="Stray Saviors logo" />
+      <p>See the dogs you're helping, every week.</p>
+      <a class="btn btn-ghost" href="https://www.instagram.com/stray_savior/" target="_blank" rel="noopener">Follow @stray_savior</a>
+    </footer>
 
-
-
-    <!-- Support Us Section -->
-<section class="support-us py-5">
-    <div class="container">
-        <h2 class="text-center mb-5">Support Our Mission</h2>
-        
-        <div class="row align-items-center">
-            <!-- Payment Options -->
-            <div class="col-md-6">
-                <h4 class="mb-3">Donate with UPI</h4>
-                <p>Scan the QR code to make a donation directly via UPI:</p>
-                <div class="qr-code">
-                    <img src="assets/upi_qr.jpeg" alt="UPI QR Code" class="img-fluid" id="qr-img">
-                </div>
-                
-                <h4 class="mt-4 mb-3">Other Payment Options</h4>
-                <ul class="payment-options">
-                    <!-- <li><strong>Bank Transfer:</strong> Account Name: XYZ NGO, Account Number: 1234567890, IFSC: ABCD0123456</li> -->
-                    <li><strong>PayPal:</strong> <a href="https://www.paypal.me/rushij24" target="_blank">Pay on Paypal</a></li>
-                    <!-- <li><strong>Google Pay / PhonePe:</strong> +91 9876543210</li> -->
-                </ul>
-            </div>
-
-            <!-- Instagram Reference -->
-            <div class="col-md-6 text-center">
-                <h4 class="mb-3">Follow Us on Instagram</h4>
-                <p>See the lives we've touched and the difference your support makes:</p>
-                <div class="instagram-frame mb-4">
-                    <img src="instagram-placeholder.jpg" alt="Instagram Feed Preview" class="img-fluid rounded">
-                </div>
-                <a href="https://www.instagram.com/stray_savior/    " target="_blank" class="btn btn-primary">Visit Our Instagram</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Donate Section -->
-    <section
-      id="donate"
-      class="donate-section text-white text-center d-flex align-items-center"
-    >
-      <div class="container">
-        <h2>Make a Difference – Donate Today</h2>
-        <p>
-          Your support helps us rescue, nurture, and rehome dogs in need.
-          Together, we can make the world a kinder place for stray dogs.
-        </p>
-      </div>
-    </section>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      document.querySelectorAll("[data-copy]").forEach((b) =>
+        b.addEventListener("click", async () => {
+          const label = b.textContent;
+          try {
+            await navigator.clipboard.writeText(b.dataset.copy);
+            b.textContent = "Copied";
+          } catch {
+            b.textContent = "Copy failed, select the ID above";
+          }
+          setTimeout(() => (b.textContent = label), 2000);
+        })
+      );
+    </script>
   </body>
 </html>
